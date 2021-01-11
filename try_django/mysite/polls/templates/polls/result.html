@@ -1,0 +1,12 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+    {%if q %}
+        <h1>{{ q.question_text }}</h1>
+        <p>Result of polls:</p>
+        {% for item in q.choice_set.all %}
+            <p>{{ item.choice_text }} : {{ item.vote }}</p>
+        {% endfor %}
+    <a href="{% url 'polls:viewlist' %}">Continue Vote</a>
+    {% endif %}
+{% endblock %}

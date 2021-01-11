@@ -1,0 +1,16 @@
+{% extends "polls/base.html" %}
+<!-- kế thừa từ base.html -->
+{% block content %} <!-- Những gì thay đổi để trong 1 block  -->
+    <h1>This is Templates</h1>
+    <p>Hello every body, my name's <i>{{name}}</i></p>
+    <b>My Domain include:</b>
+        <ul>
+            {% for item in domain %}
+                {% if item != 'Laptop' %}
+                    <li>
+                        {{item}}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+{% endblock %}

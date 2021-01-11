@@ -1,0 +1,18 @@
+<!-- làm ra view hiển thị chi tiết 1 sản phẩm, bắt lấy dữ liệu thông qua id tại urls: detail/<int:question_id>(tham số phải trùng tên với dữ liệu tại đường dẫn) -->
+{% extends "polls/base.html" %}
+
+{% block content %}
+    {% if qs %}
+    <h2>{{ qs.question_text }}</h2>
+    <form action="{% url 'polls:vote' qs.id %}" method="post">
+        {% csrf_token %}
+    <ul>
+        {% for item in qs.choice_set.all %}
+            <li style="list-style-type: none">
+                <input type="radio" value="{{ item.id }}" name="choice">{{ item.choice_text }}</li>
+        {% endfor %}
+        <p><input type="submit" value="send"></p>
+    </ul>
+    </form>
+    {% endif %}
+{% endblock %}
